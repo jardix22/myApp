@@ -7,8 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
+	<div class="wraper">
+		<header>
+			<div id="user_nav">
+				<% if user_signed_in? %>
+					Signed in as <%= current_user.email %>. Noy You?
+					<%= link_to "Sign out", destroy_user_session_path %>
+				<% else %>
+					<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
+				<% end %>
+			</div>
+		</header>
+		<section>
+			<article>
+				<div>
+					<p class="notice"><%= notice %></p>
+					<p class="alert"><%= alert %></p>
+				</div>
+			</article>
+		</section>
+	</div>
 
 <%= yield %>
 
